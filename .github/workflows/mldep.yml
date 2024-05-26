@@ -25,6 +25,8 @@ jobs:
             cd mlproject1
             virtualenv myenv
             # Pull the latest code from the Git repository
+            #git clone https://github.com/Gajanan-kale/Chatbot_nlp_gk26032024.git main
+            git init
             git pull https://github.com/Gajanan-kale/Chatbot_nlp_gk26032024.git main
             # Activate your virtual environment
             source myenv/bin/activate
