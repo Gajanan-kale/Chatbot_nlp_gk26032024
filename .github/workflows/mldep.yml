@@ -42,7 +42,7 @@ jobs:
 
         # SSH into the EC2 instance and pull the latest code
         #ssh $EC_USERNAME@$EC_HOST << 'EOF'
-        
+        mkdir mlprodeploy
         cd mlprodeploy
         # Remove existing virtual environment if it exists
         if [ -d "mlenv" ]; then
