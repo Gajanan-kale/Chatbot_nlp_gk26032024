@@ -53,7 +53,7 @@ jobs:
         fi
           # Create a new virtual environment and activate it
           python3 -m venv mlenv
-          source venv/bin/activate
+          source mlenv/bin/activate
           
           git init
           git pull https://github.com/Gajanan-kale/Chatbot_nlp_gk26032024.git
