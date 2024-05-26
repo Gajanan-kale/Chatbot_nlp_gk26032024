@@ -57,8 +57,8 @@ jobs:
           
           git init
           git pull https://github.com/Gajanan-kale/Chatbot_nlp_gk26032024.git
-          cd ~/Chatbot_nlp_gk26032024
-          cd ~/chatbot_project
+          cd Chatbot_nlp_gk26032024
+          cd chatbot_project
 
           pip install -r requirements.txt
           python manage.py migrate
