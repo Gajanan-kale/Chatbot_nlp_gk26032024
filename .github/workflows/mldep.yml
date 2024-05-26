@@ -37,12 +37,12 @@ jobs:
             # Install or update Python dependencies
             pip install -r requirements.txt
 
-	          python manage.py makemigrations
+	    python manage.py makemigrations
 
 
             # Run Django database migrations
             python manage.py migrate
-	          #no hup python manage.py runserver 0.0.0.0:8000 
+	    #no hup python manage.py runserver 0.0.0.0:8000 
 
 
             # Collect static files (if you're serving them via Django)
