@@ -19,7 +19,7 @@ jobs:
           host: ${{ secrets.EC_HOST }} 
           username: ${{ secrets.EC_USERNAME }}
           key: ${{ secrets.EC_SSH_KEY }}
-          script: |
+          script: 
             # Change to your project directory on the EC2 instance
             mkdir mlproject1
             cd mlproject1
