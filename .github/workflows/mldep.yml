@@ -50,7 +50,7 @@ jobs:
         if [ ! -d "~/mlprodeploy" ]; then
           mkdir -p ~/mlprodeploy
         fi
-        cd mlprodeploy
+        cd home/ubuntu/mlprodeploy
         # Remove existing virtual environment if it exists
         if [ -d "mlenv" ]; then
           rm -rf mlenv
