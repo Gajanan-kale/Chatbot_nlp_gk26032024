@@ -43,7 +43,7 @@ jobs:
         ssh-keyscan -H $EC_HOST >> ~/.ssh/known_hosts
 
         # SSH into the EC2 instance and pull the latest code
-        ssh $EC2_USER@$EC_HOST << 'EOF'
+        ssh $EC_USERNAME@$EC_HOST << 'EOF'
           cd ~/mlprodeploy
           # Remove existing virtual environment if it exists
           if [ -d "mlenv" ]; then
