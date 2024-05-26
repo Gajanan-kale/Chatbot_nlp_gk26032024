@@ -35,9 +35,9 @@ jobs:
         sudo apt-get install openssh-client -y
 
         # Add SSH key
-        mkdir -p ~/.ssh
-        echo "$EC_SSH_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
+        #mkdir -p ~/.ssh
+        #echo "$EC_SSH_KEY" > ~/.ssh/id_rsa
+        #chmod 600 ~/.ssh/id_rsa
 
         # Add EC2 to known hosts
         #ssh-keyscan -H $EC_HOST >> ~/.ssh/known_hosts
