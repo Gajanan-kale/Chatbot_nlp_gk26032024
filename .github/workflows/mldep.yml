@@ -42,10 +42,7 @@ jobs:
 
         # SSH into the EC2 instance and pull the latest code
         #ssh $EC_USERNAME@$EC_HOST << 'EOF'
-        # Check if the project directory exists, if not, create it
-        if [ ! -d "mlprodeploy" ]; then
-          mkdir -p mlprodeploy
-        fi
+        
         cd mlprodeploy
         # Remove existing virtual environment if it exists
         if [ -d "mlenv" ]; then
