@@ -19,7 +19,8 @@ response_templates['car models - hatchback info'] = "Our hatchback models offer 
 response_templates['car models - truck info'] = "Get the job done with our rugged and reliable truck models. From hauling heavy loads to off-road adventures, our trucks are built to tackle any task with ease."
 
 def classify_intent_input(user_input):
-    with open(r'C:\Data\chatbot_project\chatbot\neivebayesclf.pkl', "rb") as file:
+    #/chatbot_gk/chatbot_project/chatbot
+    with open(r'/home/ubuntu/chatbot_gk/chatbot_project/chatbot/neivebayesclf.pkl', "rb") as file:
         clf, tfidf_vectorizer = pickle.load(file)
     user_vector = tfidf_vectorizer.transform([user_input])
     #predicted_probabilities = clf.predict_proba(inv)[0]
