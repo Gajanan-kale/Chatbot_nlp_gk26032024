@@ -54,7 +54,7 @@ jobs:
             # Install or update Python dependencies
             pip install -r requirements.txt
             python manage.py makemigrations
-            
+          
             # Run Django database migrations
             python manage.py migrate
             nohup python manage.py runserver 0.0.0.0:8002 &
