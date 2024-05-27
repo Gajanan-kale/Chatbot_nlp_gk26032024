@@ -50,7 +50,7 @@ jobs:
             # Set up the virtual environment
             virtualenv myenv
             source myenv/bin/activate
-            
+      
             cd chatbot_project
             
             # Install or update Python dependencies
