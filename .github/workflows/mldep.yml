@@ -41,6 +41,6 @@ jobs:
             python manage.py migrate
             nohup python manage.py runserver 0.0.0.0:8000 &
             # Collect static files (if you're serving them via Django)
-            python manage.py collectstatic --noinput
+            #python manage.py collectstatic --noinput
             # Restart your application server (e.g., Gunicorn, uWSGI, etc.)
-            systemctl restart gunicorn
+            #systemctl restart gunicorn
