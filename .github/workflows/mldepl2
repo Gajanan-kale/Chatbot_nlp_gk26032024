@@ -1,0 +1,62 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # Change to your main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: SSH into EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC_HOST }} 
+          username: ${{ secrets.EC_USERNAME }}
+          key: ${{ secrets.EC_SSH_KEY }}
+          script: |
+            # Change to your project directory on the EC2 instance
+            mkdir -p chatbot_gk
+            cd chatbot_gk
+
+            # Generate SSH key pair
+            ssh-keygen -t rsa -b 4096 -C "gajananks2024@gmail.com" -f ~/.ssh/id_rsa1 -N ""
+            
+            # Print the public key (this will be added to your GitHub account manually)
+            echo "Public SSH key:"
+            cat ~/.ssh/id_rsa1.pub
+            
+            # Here you would manually add the printed SSH key to your GitHub account before proceeding
+
+            # Add the SSH key to the ssh-agent
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/id_rsa1
+
+            # Configure SSH to use the key when accessing GitHub
+            touch ~/.ssh/config
+            echo "Host github.com" >> ~/.ssh/config
+            echo "  IdentityFile ~/.ssh/id_rsa1" >> ~/.ssh/config
+
+            # Clone the repository
+            git init
+            git remote add origin git@github.com:Gajanan-kale/Chatbot_nlp_gk26032024.git
+            git pull origin main
+            
+            # Set up the virtual environment
+            virtualenv myenv
+            source myenv/bin/activate
+            
+            cd chatbot_project
+            
+            # Install or update Python dependencies
+            pip install -r requirements.txt
+            python manage.py makemigrations
+            
+            # Run Django database migrations
+            python manage.py migrate
+            nohup python manage.py runserver 0.0.0.0:8002 &
