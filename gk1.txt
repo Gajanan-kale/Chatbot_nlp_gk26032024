@@ -2,10 +2,8 @@
 FROM python:3.12.3
 #create directory
 WORKDIR /chatbotdocker
-ls
 #copy requirements.txt in docker image
 COPY requirements.txt .
-ls
 #to install requirements..txt
 RUN pip install -r requirements.txt
 #copy installed dependencies into current directory
