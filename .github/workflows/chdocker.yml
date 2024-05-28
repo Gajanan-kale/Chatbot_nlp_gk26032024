@@ -55,6 +55,7 @@ jobs:
             #docker run -d -p 80:80 --name your-django-app kalegajanan/cicd:1.0
             #docker run -d -p 10555:8004 --name=chapp kalegajanan/chd:5.0
             sudo docker exec chapp python manage.py migrate
+            
      
     
             # Optionally, stop and remove any previous containers (e.g., for updates)
