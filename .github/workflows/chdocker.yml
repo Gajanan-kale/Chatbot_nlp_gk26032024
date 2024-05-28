@@ -18,9 +18,9 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKER_PASSWORD }}
-       
+      
       - name: Build Docker Image
-        run: docker build -f r'Chatbot_nlp_gk26032024/chatbot_project' -t kalegajanan/chd:5.0 . #Dockerfile
+        run: docker build -f Chatbot_nlp_gk26032024/chatbot_project/Dockerfile -t kalegajanan/chd:5.0  #Dockerfile
             
         working-directory: . #C:\\Users\\Lenovo\\Desktop\\Docker\\221023 Change to your project path
         
