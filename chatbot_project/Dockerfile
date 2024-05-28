@@ -3,6 +3,8 @@ FROM python:3.12.3
 #create directory
 WORKDIR /chatbot_docker
 #copy requirements.txt in docker image
+# Copy the current directory contents into the container at /chatbot_docker
+COPY . /chatbot_docker
 COPY chatbot_project/requirements.txt .
 #to install requirements..txt
 RUN pip install -r requirements.txt
