@@ -41,8 +41,11 @@ jobs:
             #docker pull kalegajanan/cicd:2.0
             docker rm -f $(docker ps -aq)
             docker rmi -f $(docker images -aq)
-
+            #install docker on aws os
             # Pull the Docker image from Docker Hub
+            #sudo apt install -y docker.io
+            #sudo systemctl start docker
+            #sudo systemctl enable docker
             #docker pull kalegajanan/mysql:8.0.15
             docker run --restart=always -d -p 6666:3306 --name=docker-mysql --env="MYSQL_ROOT_PASSWORD=kale" --env="MYSQL_DATABASE=inv" kalegajanan/mysql:8.0.15 --default-authentication-plugin=mysql_native_password
 
