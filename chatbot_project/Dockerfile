@@ -9,6 +9,6 @@ RUN pip install -r requirements.txt
 #copy installed dependencies into current directory
 COPY . .
 #to expose application port
-EXPOSE 8000
+EXPOSE 8004
 #to run application in docker container
 CMD ["python","manage.py","runserver","0.0.0.0:8004"]
