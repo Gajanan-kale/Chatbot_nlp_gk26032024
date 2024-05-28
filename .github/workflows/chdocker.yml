@@ -1,0 +1,55 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main  # Change to your default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        run: echo ${{ secrets.DOCKER_PASSWORD}} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker Image
+        run: docker build -t kalegajanan/chd:5.0 . #Dockerfile
+        working-directory: . #C:\\Users\\Lenovo\\Desktop\\Docker\\221023 Change to your project path
+
+      - name: Push Docker Image to Docker Hub
+        run: docker push kalegajanan/chd:5.0
+
+      - name: SSH into EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC_HOST }}
+          username: ${{ secrets.EC_USERNAME }}
+          key: ${{ secrets.EC_SSH_KEY }}
+          script: |
+            # Pull the Docker image from Docker Hub
+            #docker pull kalegajanan/cicd:2.0
+            docker rm -f $(docker ps -aq)
+            docker rmi -f $(docker images -aq)
+
+            # Pull the Docker image from Docker Hub
+            #docker pull kalegajanan/mysql:8.0.15
+            docker run --restart=always -d -p 6666:3306 --name=docker-mysql --env="MYSQL_ROOT_PASSWORD=kale" --env="MYSQL_DATABASE=inv" kalegajanan/mysql:8.0.15 --default-authentication-plugin=mysql_native_password
+
+            # Run the Docker container
+            #docker exec -it cicd python manage.py migrate
+            docker run --restart=always -d -t --name=chapp --link docker-mysql:mysql -p 10555:8000 kalegajanan/chd:5.0
+            #docker run -d -p 80:80 --name your-django-app kalegajanan/cicd:1.0
+            docker exec chapp python manage.py migrate
+     
+    
+            # Optionally, stop and remove any previous containers (e.g., for updates)
+            # docker stop your-django-app
+            
+            # docker rm your-django-app
