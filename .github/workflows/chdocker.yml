@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Docker Image
         run: docker build -t kalegajanan/chd:5.0 . #Dockerfile
-        working-directory: . #C:\\Users\\Lenovo\\Desktop\\Docker\\221023 Change to your project path
+        working-directory: r'home/ubuntu/chatbot_gk/chatbot_project' #C:\\Users\\Lenovo\\Desktop\\Docker\\221023 Change to your project path
 
       - name: Push Docker Image to Docker Hub
         run: docker push kalegajanan/chd:5.0
