@@ -13,3 +13,4 @@ EXPOSE 8006
 #to run application in docker container
 CMD ["python","manage.py","runserver","0.0.0.0:8004"]
 edited at 23.38 pm 31524
+edited at 00.54 pm 1624
