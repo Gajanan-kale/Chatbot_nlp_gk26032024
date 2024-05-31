@@ -14,3 +14,5 @@ EXPOSE 8006
 CMD ["python","manage.py","runserver","0.0.0.0:8004"]
 edited at 23.38 pm 31524
 edited at 00.54 pm 1624
+if local branch name is different, it wil create pull request on push to main branch
+if local branch name is same, it wil not create pull request on push to main branch
